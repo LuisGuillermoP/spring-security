@@ -20,11 +20,13 @@ public class SecurityController {
 
     private static final Logger logger = LoggerFactory.getLogger(SecurityService.class);
     @GetMapping
-    public ResponseEntity holaMundo(){
+    public ResponseEntity<?> holaMundo(){
 
-        var auth :Authentication = SecurityContextHolder.getContext().getAuthentication();
-        logger.info("Datos del usuario: {}", auth.getPrincipal)
-
+        var auth  = SecurityContextHolder.getContext().getAuthentication();
+        logger.info("Datos del usuario: {}", auth.getPrincipal());
+        logger.info("Datos de los Permisos {}", auth.getAuthorities());
+        logger.info("Esta autenticado {}", auth.isAuthenticated());
         return service.Saludo();
+
     };
 }
