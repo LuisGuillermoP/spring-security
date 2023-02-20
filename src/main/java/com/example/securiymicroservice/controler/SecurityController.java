@@ -29,4 +29,14 @@ public class SecurityController {
         return service.Saludo();
 
     };
+    @GetMapping("/admin")
+    public ResponseEntity<?> holaMundoAdmin(){
+
+        var auth  = SecurityContextHolder.getContext().getAuthentication();
+        logger.info("Datos del usuario: {}", auth.getPrincipal());
+        logger.info("Datos de los Permisos {}", auth.getAuthorities());
+        logger.info("Esta autenticado {}", auth.isAuthenticated());
+        return service.Saludo();
+
+    };
 }
